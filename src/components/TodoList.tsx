@@ -10,6 +10,7 @@ interface props {
   CompletedTodos: Array<Todo>;
 }
 
+
 const TodoList: React.FC<props> = ({
   todos,
   setTodos,

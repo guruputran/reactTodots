@@ -70,13 +70,13 @@ const SingleTodo: React.FC<{
                 }
               }}
             >
-              <AiFillEdit />
+              <AiFillEdit color="teal" />
             </span>
             <span className="icon" onClick={() => handleDelete(todo.id)}>
-              <AiFillDelete />
+              <AiFillDelete color="red"/>
             </span>
             <span className="icon" onClick={() => handleDone(todo.id)}>
-              <MdDone />
+              <MdDone color="darkmagenta"/>
             </span>
           </div>
         </form>

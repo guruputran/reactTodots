@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
@@ -22,8 +22,6 @@ const App: React.FC = () => {
   const onDragEnd = (result: DropResult) => {
     const { destination, source } = result;
 
-    console.log(result);
-
     if (!destination) {
       return;
     }
@@ -45,6 +43,7 @@ const App: React.FC = () => {
     } else {
       add = complete[source.index];
       complete.splice(source.index, 1);
+
     }
 
     // Destination Logic
@@ -56,12 +55,22 @@ const App: React.FC = () => {
 
     setCompletedTodos(complete);
     setTodos(active);
+    console.log("Todos",todos);
+    console.log("Completed Todos",CompletedTodos);
   };
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    console.log("Triggered !!")
+    console.log("Todos",todos);
+    console.log("Completed Todos",CompletedTodos);
+  },[todos,CompletedTodos]);
+
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="App">
-        <span className="heading">Taskify</span>
+        <span className="heading">Visual Task Manager</span>
         <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
         <TodoList
           todos={todos}
